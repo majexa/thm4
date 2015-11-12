@@ -8,7 +8,6 @@ class ThmFourModule {
     self::$names[$baseParam] = $name;
     self::$basePaths[$name] = $baseParam;
     Ngn::addBasePath(self::$rootPath.'/'.$name, 3);
-
   }
 
   // installer
@@ -54,4 +53,4 @@ class ThmFourModule {
 
 }
 
-ThmFourModule::$rootPath = NGN_ENV_PATH.'/thm-four-modules/modules';
+ThmFourModule::$rootPath = NGN_ENV_PATH.'/thm4-modules/modules';

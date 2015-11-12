@@ -7,16 +7,6 @@
   <link rel="icon" href="data:;base64,=">
   {sflm}
   <script src="/i/js/tiny_mce/tiny_mce.js"></script>
-  <script>
-    Ngn.authorized = <?= Auth::get('id') ?: 'false' ?>;
-    Ngn.isAdmin  = <?= Misc::isAdmin() ? 'true' : 'false' ?>;
-    window.addEvent('domready', function() {
-      Ngn.addBtnAction('.auth', function() {
-        new Ngn.Dialog.Auth();
-      });
-      Ngn.Milkbox.add(document.getElements('a.lightbox'));
-    });
-  </script>
   <link rel="stylesheet" type="text/css" href="/thm/css/design.css" media="screen, projection"/>
 </head>
 <body>
@@ -71,6 +61,15 @@
   <? $this->tpl('counters', null, true) ?>
   <?= $d['footer'] ?>
 </div>
+
+<script>
+  Ngn.authorized = <?= Auth::get('id') ?: 'false' ?>;
+  Ngn.isAdmin = <?= Misc::isAdmin() ? 'true' : 'false' ?>;
+  Ngn.Btn.addAction('.auth', function() {
+    new Ngn.Dialog.Auth();
+  });
+  //Ngn.Milkbox.add(document.getElements('a.lightbox'));
+</script>
 
 </body>
 
