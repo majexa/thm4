@@ -9,6 +9,9 @@ class ThmFourRouter extends DefaultRouter {
   function _getController() {
     if (preg_match('/^u\\/thumb\\/(.+)\\/(\d+)x(\d+)\\/([^\\/]+)/', $this->req->path, $m)) {
       // thumbs generation
+      if (file_exists(UPLOAD_PATH.'/'.$m[1].'/'.$m[4])) {
+        return new Ctrl404($this, new NoFileException(UPLOAD_PATH.'/'.$m[1].'/'.$m[4]));
+      }
       $destPath = UPLOAD_PATH.'/'.Misc::removePrefix('u/', $this->req->path);
       Dir::make(dirname($destPath));
       (new Image)->resizeAndSave(UPLOAD_PATH.'/'.$m[1].'/'.$m[4], $destPath, $m[2], $m[3]);
