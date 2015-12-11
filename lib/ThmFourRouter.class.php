@@ -14,7 +14,9 @@ class ThmFourRouter extends DefaultRouter {
       }
       $destPath = UPLOAD_PATH.'/'.Misc::removePrefix('u/', $this->req->path);
       Dir::make(dirname($destPath));
-      (new Image)->resizeAndSave(UPLOAD_PATH.'/'.$m[1].'/'.$m[4], $destPath, $m[2], $m[3]);
+      $file = UPLOAD_PATH.'/'.$m[1].'/'.$m[4];
+      if (!file_exists($file)) throw new Error404('Image does not exists');
+      (new Image)->resizeAndSave($file, $destPath, $m[2], $m[3]);
       redirect('/'.$this->req->path);
       die();
     }
