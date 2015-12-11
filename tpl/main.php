@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--<?= gethostname() ?>-->
 <html>
 <head>
   <title><?= $d['pageHeadTitle'] ?></title>
