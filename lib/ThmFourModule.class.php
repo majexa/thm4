@@ -25,7 +25,7 @@ class ThmFourModule {
     if (!file_exists($file)) return;
     $structures = require $file;
     foreach ($structures as $strName => $strFields) {
-      DdStructureCore::install($strName, $strFields);
+      DdStructureCore::create($strName, $strFields, false);
     }
   }
 
