@@ -18,20 +18,13 @@ abstract class CtrlThemeFour extends CtrlThemeFourBase {
 
   protected function init() {
     parent::init();
+    Sflm::frontend('css')->addFolder(ThmFourModule::$rootPath.'/'.$this->themeFourModule().'/m/css');
     $this->d['basePath'] = ThmFourModule::$basePaths[$this->themeFourModule()];
     if ($this->d['basePath']) $this->d['basePath'] = '/'.$this->d['basePath'];
     else $this->d['basePath'] = '';
-    if (Auth::get('id')) {
-      $this->d['profile'] = (new DdItems('profile'))->getItemByField('userId', Auth::get('id'));
-    }
-    Sflm::$absBasePaths['thm'] = NGN_ENV_PATH.'/thm4/thm';
     $this->d['menu'] = Config::getVar('menu', true);
+    Sflm::$absBasePaths['thm'] = NGN_ENV_PATH.'/thm4/thm';
     $this->d['layout'] = 'cols1';
-    Sflm::frontend('css')->addLib('icons');
-    Sflm::frontend('css')->addFolder(WEBROOT_PATH.'/m/css');
-    Sflm::frontend('css')->addFolder(NGN_ENV_PATH.'/thm4/thm/css');
-    Sflm::frontend('css')->addFolder(ThmFourModule::$rootPath.'/'.$this->themeFourModule().'/m/css');
-    Sflm::frontend('js')->addLib('m/js/init.js');
   }
 
   function oProcessForm(DdForm $form) {

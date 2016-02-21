@@ -17,3 +17,10 @@ padding-bottom: 90px;
 color: #9E9E9E;
 line-height: 170%;
 }
+
+.ddItems.tile .line {
+display: none;
+}
+.ddItems.tile .item {
+float: left;
+}

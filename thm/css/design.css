@@ -26,7 +26,6 @@ margin-right: 10px;
 display: block;
 float: left;
 text-decoration: none;
-
 }
 .header a:hover.logo {
 text-decoration: none;
@@ -118,7 +117,8 @@ margin-right: 20px;
 }
 .header .personal {
 float: right;
-margin-top: 7px;
+margin-top: 8px;
+margin-right: 5px;
 font-size: 10px;
 }
 .header .personal .avatar {
@@ -213,4 +213,5 @@ margin-top: 10px;
 margin-bottom: 30px;
 font-size: 11px;
 text-align: center;
+color: #888;
 }

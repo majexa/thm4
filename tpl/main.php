@@ -8,9 +8,12 @@
   <link rel="icon" href="data:;base64,=">
   {sflm}
   <script src="/i/js/tiny_mce/tiny_mce.js"></script>
-  <link rel="stylesheet" type="text/css" href="/thm/css/design.css" media="screen, projection"/>
+  <script>
+    Ngn.authorized = <?= Auth::get('id') ?: 'false' ?>;
+    Ngn.isAdmin = <?= Misc::isAdmin() ? 'true' : 'false' ?>;
+  </script>
 </head>
-<body>
+<body<?= $d['bodyClass'] ? ' class="'.$d['bodyClass'].'"' : '' ?>>
 <div class="header">
   <div class="container">
     <? if (!$d['mobile']) { ?>
@@ -23,13 +26,32 @@
     <? } ?>
     <? if (!$d['mobile']) { ?>
     <div class="personal">
-      <? if ($id = Auth::get('id')) { ?>
-        <? if ($d['profile']['sm_image']) { ?>
-          <img src="<?= $d['profile']['sm_image'] ?>" class="avatar" />
+      <? if (Auth::get('id')) { ?>
+        <? if ($d['curProfile']['sm_image']) { ?>
+          <img src="<?= $d['curProfile']['sm_image'] ?>?<?= $d['curProfile']['dateUpdate_tStamp'] ?>" class="avatar" />
+        <? } else { ?>
+          <img class="avatar" />
         <? } ?>
-        <div class="login pseudoLink" id="login"><?= UsersCore::getTitle($id) ?></div>
-        <script>$('login').addEvent('click', Ngn.ThmFour.Profile.openEditDialog);</script>
-        <a href="?logout=1">Выход</a>
+
+        <?/*
+        <a href="/user" class="login" id="login"><?= UsersCore::getTitle($id) ?></a>
+        */?>
+
+        <div class="login pseudoLink" id="login"><?= UsersCore::getTitle(Auth::get('id')) ?></div>
+        <script>
+          $('login').addEvent('click', function() {
+            new Ngn.Dialog.RequestFormTabs({
+            //new Ngn.Dialog.RequestForm({
+              width: 400,
+              url: '/profile/json_edit',
+              onSubmited: function() {
+                window.location.reload();
+              }
+            });
+          });
+        </script>
+
+        <a href="<?= $d['logoutPath'] ?>?logout=1">Выход</a>
       <? } else { ?>
         <a href="#" class="auth">Войти</a>
       <? } ?>
@@ -64,8 +86,6 @@
 </div>
 
 <script>
-  Ngn.authorized = <?= Auth::get('id') ?: 'false' ?>;
-  Ngn.isAdmin = <?= Misc::isAdmin() ? 'true' : 'false' ?>;
   Ngn.Btn.addAction('.auth', function() {
     new Ngn.Dialog.Auth();
   });

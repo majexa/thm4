@@ -1,4 +1,5 @@
 <div class="span-8 col1">
+  111
   <? $this->tpl($d['blocksTpl'], $d, false, false, 'blocks') ?>
 </div>
 <div class="span-8 col2 last">

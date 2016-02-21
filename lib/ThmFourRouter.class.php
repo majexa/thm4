@@ -24,8 +24,12 @@ class ThmFourRouter extends DefaultRouter {
     if (!isset($this->req->params[0]) and class_exists($homeProjectControllerClass)) {
       return new $homeProjectControllerClass($this);
     }
-    if (isset($this->req->params[0]) and $this->req->params[0] == 'profile') {
-      return new CtrlThmFourProfile($this);
+    if (isset($this->req->params[0])) {
+      if ($this->req->params[0] == 'profile') {
+        return new CtrlThmFourProfile($this);
+      } elseif ($this->req->params[0] == 'user') {
+        return new CtrlThmFourUser($this);
+      }
     }
     $class = $this->getControllerClass();
     if ($class == 'CtrlDefault') throw new NotLoggableError('ThmFour: CtrlDefault is not supported');
