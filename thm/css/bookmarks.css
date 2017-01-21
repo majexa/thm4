@@ -21,7 +21,8 @@ padding-bottom: 13px;
 font-size: 14px;
 }
 .bookmarks a {
-margin: 0 10px;
+margin: 0;
+margin-left: 20px;
 text-decoration: none !important;
 color: #B0B0B0;
 padding: 5px 0 10px 0;
@@ -35,4 +36,10 @@ border-bottom: 1px solid #000;
 .bookmarks a:hover {
 color: #555;
 border-bottom: 1px solid #555;
+}
+.tools {
+position: absolute;
+right: 0;
+padding-right: 20px;
+z-index: 100;
 }

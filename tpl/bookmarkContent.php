@@ -1,3 +1,4 @@
+<?= $d['tools'] ?>
 <? if ($d['pageTitle'] or $d['bookmarks']) { ?>
 <div class="bookmarks">
   <? $d['pageTitle'] ? print '<h1>'.$d['pageTitle'].'</h1>' : $this->tpl('cp/links', $d['bookmarks']) ?>

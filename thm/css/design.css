@@ -113,7 +113,19 @@ margin-top: 17px;
 font-family: Boblic;
 }
 .header .menu a {
-margin-right: 20px;
+margin-right: 10px;
+border-radius: 5px;
+padding: 5px;
+}
+.header .menu a.sel {
+background: #555;
+}
+.header .menu a.create {
+color: #323232;
+background: #ED0461;
+}
+.header .menu a.create:hover {
+background: #ccc;
 }
 .header .personal {
 float: right;
@@ -129,8 +141,22 @@ margin-right: 10px;
 }
 .header .personal .login {
 display: inline-block;
-margin-right: 10px;
+margin-right: 15px;
 }
+.header .personal .nonAuthorized {
+padding-top: 10px;
+}
+.header .personal .nonAuthorized .auth {
+padding: 0 0 2px 17px;
+background: url(/thm/img/auth.png) no-repeat 0 1px;
+}
+
+.header .personal .logout {
+padding: 0 0 2px 17px;
+background: url(/thm/img/logout.png) no-repeat 0 1px;
+}
+
+
 h1, h2, h3 {
 font-family: Boblic;
 }
@@ -154,7 +180,7 @@ padding: 0 20px;
 .col1 .blockMenu {
 padding: 10px;
 }
-.col1 .bColBody {
+.col1 .bColBody, .col0 .bColBody {
 padding-left: 20px;
 }
 .col1 .btn {
@@ -177,9 +203,12 @@ margin-top: 15px;
 .colN3 {
 padding-top: 10px;
 }
-.col2 {
+.cols2 .col2 {
 width: 608px;
 margin-left: -1px;
+}
+.cols2-wide .col2 {
+width: 447px;
 }
 .span-21.col2 .bColBody {
 padding: 10px 30px;
@@ -207,7 +236,6 @@ a.thumb img {
 margin: 3px;
 display: block;
 }
-
 .footer {
 margin-top: 10px;
 margin-bottom: 30px;

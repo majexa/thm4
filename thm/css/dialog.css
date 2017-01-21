@@ -15,3 +15,14 @@ border-top-right-radius: 7px;
 border-top-left-radius: 7px;
 padding-left: 10px;
 }
+
+.dialog-tabs .formUser .element {
+margin-bottom: 10px;
+}
+.dialog-tabs .formUser .element input {
+width: 150px;
+font-size: 16px;
+}
+.dialog-tabs .formUser .element input[name=name] {
+width: 250px;
+}

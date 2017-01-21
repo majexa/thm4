@@ -4,8 +4,7 @@
 <head>
   <title><?= $d['pageHeadTitle'] ?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="shortcut icon" href="/m/img/favicon.ico">
-  <link rel="icon" href="data:;base64,=">
+  <link rel="shortcut icon" href="/m/img/favicon.ico?v4">
   {sflm}
   <script src="/i/js/tiny_mce/tiny_mce.js"></script>
   <script>
@@ -32,16 +31,10 @@
         <? } else { ?>
           <img class="avatar" />
         <? } ?>
-
-        <?/*
-        <a href="/user" class="login" id="login"><?= UsersCore::getTitle($id) ?></a>
-        */?>
-
         <div class="login pseudoLink" id="login"><?= UsersCore::getTitle(Auth::get('id')) ?></div>
         <script>
           $('login').addEvent('click', function() {
             new Ngn.Dialog.RequestFormTabs({
-            //new Ngn.Dialog.RequestForm({
               width: 400,
               url: '/profile/json_edit',
               onSubmited: function() {
@@ -50,10 +43,9 @@
             });
           });
         </script>
-
-        <a href="<?= $d['logoutPath'] ?>?logout=1">Выход</a>
+        <a href="<?= $d['logoutPath'] ?>?logout=1" class="logout">Выход</a>
       <? } else { ?>
-        <a href="#" class="auth">Войти</a>
+        <div class="nonAuthorized"><a href="#" class="auth">Войти</a></div>
       <? } ?>
     </div>
     <? } ?>
@@ -73,7 +65,7 @@
   <div class="cTop"></div>
   <div class="pages">
     <div class="cBody">
-      <? $this->tpl($d['layout'], $d, false, false, 'layout') ?>
+      <? $this->tpl('layout/'.$d['layout'], $d, false, false, 'layout') ?>
     </div>
   </div>
   <div class="cBottom">

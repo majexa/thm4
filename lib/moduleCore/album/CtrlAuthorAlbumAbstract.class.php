@@ -1,14 +1,9 @@
 <?php
 
-abstract class CtrlThemeFourDd extends CtrlThemeFour {
-use DdCrudParamFilterCtrl;
+abstract class CtrlAuthorAlbumAbstract extends CtrlThemeFourDd {
 
   protected function id() {
     return $this->req->rq('id');
-  }
-
-  protected function getStrName() {
-    return $this->themeFourModule();
   }
 
   protected function getParamActionN() {
@@ -17,9 +12,18 @@ use DdCrudParamFilterCtrl;
 
   function action_default() {
     $this->d['layout'] = 'cols2';
-    $this->d['blocksTpl'] = 'empty';
+    $this->d['blocksTpl'] = 'master/profileBlock';
     $this->d['tpl'] = 'bookmarkContent';
     $this->d['contentTpl'] = 'dd/list';
+    $ddo = new DdoFour($this->getStrName(), 'siteItems');
+    $ddo->gridMode = 'tile';
+    $items = $this->items();
+    $this->d['user'] = DbModelCore::get('users', $this->req->param(1));
+    $this->d['profile'] = (new DdItems('profile'))->getItemByField('userId', $this->req->param(1));
+    $items->addF('userId', $this->req->param(1));
+    $_items = $items->getItems();
+    $this->d['pNums'] = $items->pNums;
+    $this->d['html'] = count($_items) ? $ddo->setItems($_items)->els() : '<div class="noItems">нет работ</div>';
   }
 
   function action_item() {

@@ -14,11 +14,23 @@ right: 10px;
 background: #fff; /*hack*/
 }
 .ddItems .item .smIcons {
-background: #fff;
+background-color: #fff;
 border-radius: 15px;
 padding: 3px;
 }
 .ddItems .item .smIcons:hover {
-background: #FFECB2;
+background-color: #FFECB2;
 border-color: #FFBF00;
+}
+.ddItems.tile .item {
+margin-right: 15px;
+margin-bottom: 15px;
+}
+.ddItems.tile {
+padding-right: 0;
+}
+.ddItems.tile .thumb p,
+.ddItems.tile .thumb h2 {
+margin-top: 7px;
+margin-left: 10px;
 }

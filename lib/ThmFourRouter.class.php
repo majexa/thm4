@@ -32,7 +32,9 @@ class ThmFourRouter extends DefaultRouter {
       }
     }
     $class = $this->getControllerClass();
-    if ($class == 'CtrlDefault') throw new NotLoggableError('ThmFour: CtrlDefault is not supported');
+    if ($class == 'CtrlDefault') {
+      throw new NotLoggableError("ThmFour: CtrlDefault is not supported. Define $homeProjectControllerClass class");
+    }
     return parent::_getController();
   }
 

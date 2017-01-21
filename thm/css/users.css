@@ -1,0 +1,25 @@
+.users {
+text-align: center;
+padding: 20px 30px;
+}
+.users .item {
+text-align: center;
+display: inline-block;
+margin-right: 20px;
+margin-bottom: 20px;
+}
+.users .item img {
+border: 1px solid #E8E8E8;
+border-radius: 100px;
+display: block;
+margin-bottom: 7px;
+padding: 2px;
+}
+.users .item a:hover img {
+background: #FFBF00;
+border-color: #ccc;
+}
+.user {
+padding-left: 17px;
+background: url(/thm/img/user.png) no-repeat;
+}
